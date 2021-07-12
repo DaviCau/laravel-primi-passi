@@ -61,13 +61,29 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            ul {
+                list-style: none;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
 
             <div class="content">
-                <div class="title m-b-md">Hello World</div>
+                <div class="title m-b-md">Hello, {{ $name }}!</div>
+
+                @if (count($skills) == 0)
+                    <h2>Non so fare nulla!</h2>
+                @elseif (count($skills) == 1)
+                    <h2>So usare solo {{ $skills[0] }}</h2>
+                @else
+                    <h2>So usare queste tecnologie:</h2>
+                    <ul>
+                        @foreach ($skills as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
     </body>
